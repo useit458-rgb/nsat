@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Compare Assessments - NSAT{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <h2 class="fw-bold mb-1"><i class="bi bi-arrow-left-right text-primary me-2"></i>Compare Security Assessments</h2>
+    <p class="text-muted mb-0">Evaluate historical delta: newly exposed ports, remediated issues, and risk trajectory.</p>
+  </div>
+</div>
+
+<!-- Assessment Selection Form -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body py-3">
+    <form method="GET" action="{{ url_for('assessments.compare_assessments') }}" class="row g-3 align-items-end">
+      <div class="col-md-5">
+        <label class="form-label fw-bold small text-muted">Baseline Scan (A)</label>
+        <select class="form-select" name="a" required>
+          <option value="">Select Baseline Assessment...</option>
+          {% for a in all_assessments %}
+            <option value="{{ a.id }}" {% if assessment_a and assessment_a.id == a.id %}selected{% endif %}>
+              #{{ a.id }} - {{ a.target_ip }} ({{ a.title }}) [{{ a.created_at | format_dt("%m/%d %H:%M") }}]
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-md-5">
+        <label class="form-label fw-bold small text-muted">Comparison Scan (B)</label>
+        <select class="form-select" name="b" required>
+          <option value="">Select Comparison Assessment...</option>
+          {% for b in all_assessments %}
+            <option value="{{ b.id }}" {% if assessment_b and assessment_b.id == b.id %}selected{% endif %}>
+              #{{ b.id }} - {{ b.target_ip }} ({{ b.title }}) [{{ b.created_at | format_dt("%m/%d %H:%M") }}]
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-primary fw-semibold">
+          <i class="bi bi-search me-1"></i> Compare
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Comparison Diff Results -->
+{% if diff_data %}
+  <div class="row g-4 mb-4">
+    <!-- Port Exposure Delta Card -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header fw-bold bg-white">
+          <i class="bi bi-hdd-network me-1 text-primary"></i> TCP Port Changes
+        </div>
+        <div class="card-body">
+          <h6 class="fw-bold text-danger small text-uppercase">Newly Exposed Ports in Scan B</h6>
+          {% if diff_data.new_in_b %}
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              {% for p in diff_data.new_in_b %}
+                <span class="badge bg-danger fs-6"><i class="bi bi-plus-circle"></i> Port {{ p }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted small mb-3">No newly opened ports detected in Scan B.</p>
+          {% endif %}
+
+          <h6 class="fw-bold text-success small text-uppercase">Closed / Remediated Ports in Scan B</h6>
+          {% if diff_data.closed_in_b %}
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              {% for p in diff_data.closed_in_b %}
+                <span class="badge bg-success fs-6"><i class="bi bi-check-circle"></i> Port {{ p }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted small mb-3">No closed ports since Scan A.</p>
+          {% endif %}
+
+          <h6 class="fw-bold text-muted small text-uppercase">Unchanged Active Ports</h6>
+          <div class="d-flex flex-wrap gap-2">
+            {% for p in diff_data.common_ports %}
+              <span class="badge bg-light text-dark border">Port {{ p }}</span>
+            {% else %}
+              <span class="text-muted small">None</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Findings Delta Card -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header fw-bold bg-white">
+          <i class="bi bi-shield-exclamation me-1 text-danger"></i> Findings & Risk Delta
+        </div>
+        <div class="card-body">
+          <h6 class="fw-bold text-danger small text-uppercase">New Findings Introduced in Scan B</h6>
+          {% if diff_data.new_findings %}
+            <ul class="list-group list-group-flush mb-3">
+              {% for f in diff_data.new_findings %}
+                <li class="list-group-item px-0 py-2">
+                  <span class="badge {{ f.severity | severity_badge }} me-1">{{ f.severity }}</span>
+                  <strong>{{ f.title }}</strong>
+                  <div class="small text-muted">{{ f.description }}</div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted small mb-3">No new vulnerabilities or security risks introduced.</p>
+          {% endif %}
+
+          <h6 class="fw-bold text-success small text-uppercase">Resolved / Absent Findings in Scan B</h6>
+          {% if diff_data.resolved_findings %}
+            <ul class="list-group list-group-flush">
+              {% for f in diff_data.resolved_findings %}
+                <li class="list-group-item px-0 py-2">
+                  <span class="badge bg-success me-1">Resolved</span>
+                  <strong class="text-muted text-decoration-line-through">{{ f.title }}</strong>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted small">No findings resolved between assessments.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% elif assessment_a or assessment_b %}
+  <div class="alert alert-info shadow-sm">
+    <i class="bi bi-info-circle me-1"></i> Please select both Scan A and Scan B from the dropdowns above to calculate differences.
+  </div>
+{% endif %}
+{% endblock %}

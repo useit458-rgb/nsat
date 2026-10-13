@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Security Findings - NSAT{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <h2 class="fw-bold mb-1"><i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>Security Findings Directory</h2>
+    <p class="text-muted mb-0">Prioritized inventory of observed security risks, missing defensive headers, and system weaknesses.</p>
+  </div>
+</div>
+
+<!-- Filters -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body py-3">
+    <form method="GET" action="{{ url_for('findings.list_findings') }}" class="row g-2 align-items-center">
+      <div class="col-md-5">
+        <input type="text" class="form-control" name="q" placeholder="Search by title, asset IP, description..." value="{{ search_query }}">
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" name="severity">
+          <option value="">All Severities</option>
+          <option value="Critical" {% if severity_filter == 'Critical' %}selected{% endif %}>Critical</option>
+          <option value="High" {% if severity_filter == 'High' %}selected{% endif %}>High</option>
+          <option value="Medium" {% if severity_filter == 'Medium' %}selected{% endif %}>Medium</option>
+          <option value="Low" {% if severity_filter == 'Low' %}selected{% endif %}>Low</option>
+          <option value="Informational" {% if severity_filter == 'Informational' %}selected{% endif %}>Informational</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select" name="category">
+          <option value="">All Categories</option>
+          {% for cat in categories %}
+            <option value="{{ cat }}" {% if category_filter == cat %}selected{% endif %}>{{ cat }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-secondary">Filter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Findings List Table -->
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    {% if findings %}
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Severity</th>
+              <th>Finding Title</th>
+              <th>Category</th>
+              <th>Target Asset</th>
+              <th>Port</th>
+              <th>Confidence</th>
+              <th>Detected</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in findings %}
+              <tr>
+                <td>
+                  <span class="badge {{ f.severity | severity_badge }} px-2 py-1">{{ f.severity }}</span>
+                </td>
+                <td class="fw-bold">{{ f.title }}</td>
+                <td><span class="badge bg-light text-dark border">{{ f.category }}</span></td>
+                <td><code>{{ f.asset_ip }}</code></td>
+                <td>
+                  {% if f.port %}
+                    <span class="badge bg-light text-dark border font-monospace">{{ f.port }}</span>
+                  {% else %}
+                    <span class="text-muted">-</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <span class="badge bg-info text-dark">{{ f.confidence }}</span>
+                </td>
+                <td class="text-muted small">{{ f.created_at | format_dt("%m/%d %H:%M") }}</td>
+                <td class="text-end">
+                  <a href="{{ url_for('findings.finding_detail', finding_id=f.id) }}" class="btn btn-sm btn-outline-primary">
+                    Inspect <i class="bi bi-chevron-right"></i>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="text-center py-5 text-muted">
+        <i class="bi bi-shield-check display-4 text-success mb-2 d-block"></i>
+        <h5 class="fw-bold">No Findings Found</h5>
+        <p class="small">No active security findings meet your current filter criteria.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

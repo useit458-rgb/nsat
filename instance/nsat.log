@@ -1,0 +1,365 @@
+[2026-10-12 16:02:20] [INFO] [werkzeug:97] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2026-10-12 16:02:20] [INFO] [werkzeug:97] [33mPress CTRL+C to quit[0m
+[2026-10-12 16:02:20] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 16:02:21] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 16:02:21] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 16:02:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:29] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:02:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:29] "GET /static/css/style.css HTTP/1.1" 200 -
+[2026-10-12 16:02:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:29] "GET /static/js/main.js HTTP/1.1" 200 -
+[2026-10-12 16:02:30] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:30] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:02:31] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2026-10-12 16:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:41] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:42] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:43] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:02:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:44] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:45] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 16:02:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:53] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:02:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:56] "GET /assessments/new HTTP/1.1" 200 -
+[2026-10-12 16:02:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:02:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:02:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:04:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:04] "[32mPOST /assessments/new HTTP/1.1[0m" 302 -
+[2026-10-12 16:04:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:04] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 16:04:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:04:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:04:07] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:07] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:09] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:09] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:12] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:12] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:14] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:14] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:17] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:17] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:19] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:22] "GET /assessments/1/status HTTP/1.1" 200 -
+[2026-10-12 16:04:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:22] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 16:04:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:04:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:04:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:05:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:05:05] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:05:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:05:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:05:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:05:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:13] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:13] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 16:06:13] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:13] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:19] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:06:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:21] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:21] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:06:21] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:21] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:22] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:06:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:22] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:23] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:23] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:06:23] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:23] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:23] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:24] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:24] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 16:06:24] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:24] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:24] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:25] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:06:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:41] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:06:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:49] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:49] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:06:49] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:49] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:49] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:51] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:06:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:53] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:06:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:56] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 16:06:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:06:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:06:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:04] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:07:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:08] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:08] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:07:08] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:08] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:11] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:11] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 16:07:11] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:07:11] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:07:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:44] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:08:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:45] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:08:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:47] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 16:08:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:08:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:08:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:09:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:05] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:09:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:09:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:09:58] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:58] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:09:58] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:09:58] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:09:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:12] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:12] "GET /findings/1 HTTP/1.1" 200 -
+[2026-10-12 16:10:12] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:12] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:12] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:41] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:10:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:42] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:10:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:51] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 16:10:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:10:51] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:10:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:14:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:14:00] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:14:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:14:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:14:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:14:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:38] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:15:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:39] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:15:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:42] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:15:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:44] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 16:15:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:45] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:15:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:45] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:47] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 16:15:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:48] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:48] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:15:48] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:48] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:50] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:15:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:54] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:54] "GET /assessments/new HTTP/1.1" 200 -
+[2026-10-12 16:15:54] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:15:54] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:15:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:29] "[32mPOST /assessments/new HTTP/1.1[0m" 302 -
+[2026-10-12 16:22:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:29] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:22:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:29] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:32] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:32] "GET /assessments/2/status HTTP/1.1" 200 -
+[2026-10-12 16:22:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:35] "GET /assessments/2/status HTTP/1.1" 200 -
+[2026-10-12 16:22:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:37] "GET /assessments/2/status HTTP/1.1" 200 -
+[2026-10-12 16:22:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:37] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:22:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:53] "[32mPOST /reports/generate/2/pdf HTTP/1.1[0m" 302 -
+[2026-10-12 16:22:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:53] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:22:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:55] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:55] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 16:22:55] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:22:55] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:22:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:23:01] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:23:01] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:23:01] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:23:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:23:01] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:23:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:30:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:30:59] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:30:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:30:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:30:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:30:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:03] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:03] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:31:03] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:03] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:04] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:31:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:15] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:31:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:38] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:31:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:42] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:31:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:31:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:31:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:19] "GET /assessments/new HTTP/1.1" 200 -
+[2026-10-12 16:32:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:19] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:40] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:32:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:41] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:32:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:57] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:57] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:32:57] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:57] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:57] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:59] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:32:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:32:59] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:32:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:15] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:50:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:15] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:17] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:17] "GET /assessments/?q=&status= HTTP/1.1" 200 -
+[2026-10-12 16:50:17] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:17] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:20] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 16:50:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:50:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:50:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:50] "GET /assessments/?q=&status= HTTP/1.1" 200 -
+[2026-10-12 16:57:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:50] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:57:53] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:57:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "GET / HTTP/1.1" 200 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:37] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:43] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 16:58:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 16:58:43] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 16:58:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:04] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 17:00:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:16] "GET /assessments/compare HTTP/1.1" 200 -
+[2026-10-12 17:00:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:20] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:00:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:20] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:00:20] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:00:37] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\routes\\assessments.py', reloading
+[2026-10-12 17:00:38] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:00:40] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:00:40] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:00:45] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\routes\\assessments.py', reloading
+[2026-10-12 17:00:45] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:00:47] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:00:47] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:01:27] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:27] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:01:28] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:28] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:28] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:30] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:30] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 17:01:30] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:30] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:35] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 17:01:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:41] "GET /assessments/2 HTTP/1.1" 200 -
+[2026-10-12 17:01:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:47] "GET /assessments/1 HTTP/1.1" 200 -
+[2026-10-12 17:01:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:53] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\tests\\integration\\test_web_routes.py', reloading
+[2026-10-12 17:01:53] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:01:55] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:01:55] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:01:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:56] "[32mPOST /assessments/2/delete HTTP/1.1[0m" 302 -
+[2026-10-12 17:01:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:56] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:01:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:01:56] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:01:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:00] "[32mPOST /assessments/1/delete HTTP/1.1[0m" 302 -
+[2026-10-12 17:02:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:00] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:02:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:00] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:04] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:02:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:04] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:05] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:02:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:05] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:09] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:09] "GET /assessments/new HTTP/1.1" 200 -
+[2026-10-12 17:02:09] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:09] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:16] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:02:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:16] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:39] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 17:02:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:39] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:40] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 17:02:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:40] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:41] "GET /reports/ HTTP/1.1" 200 -
+[2026-10-12 17:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:42] "GET /settings/ HTTP/1.1" 200 -
+[2026-10-12 17:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:42] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:44] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:02:44] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:02:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:03:14] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\routes\\assessments.py', reloading
+[2026-10-12 17:03:14] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:03:16] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:03:16] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:03:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:03:38] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:03:47] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:03:47] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:04:45] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\config.py', reloading
+[2026-10-12 17:04:45] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:04:47] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:04:47] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:05:18] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\__init__.py', reloading
+[2026-10-12 17:05:18] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:05:20] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:05:20] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:05:31] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\__init__.py', reloading
+[2026-10-12 17:05:31] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:06:31] [INFO] [werkzeug:97] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2026-10-12 17:06:31] [INFO] [werkzeug:97] [33mPress CTRL+C to quit[0m
+[2026-10-12 17:06:31] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:06:33] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:06:33] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:06:46] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:06:46] "HEAD / HTTP/1.1" 200 -
+[2026-10-12 17:07:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:25] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:07:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:25] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:33] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:33] "GET /assessments/ HTTP/1.1" 200 -
+[2026-10-12 17:07:33] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:33] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:34] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:34] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 17:07:34] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:34] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:35] "GET /findings/ HTTP/1.1" 200 -
+[2026-10-12 17:07:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:35] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:38] "GET /assessments/new HTTP/1.1" 200 -
+[2026-10-12 17:07:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:38] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:41] "GET / HTTP/1.1" 200 -
+[2026-10-12 17:07:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+[2026-10-12 17:07:41] [INFO] [werkzeug:97] 127.0.0.1 - - [12/Oct/2026 17:07:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+[2026-10-12 17:15:44] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\config.py', reloading
+[2026-10-12 17:15:44] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:15:46] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:15:46] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:15:53] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\__init__.py', reloading
+[2026-10-12 17:15:53] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:15:56] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:15:56] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:16:04] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\app\\__init__.py', reloading
+[2026-10-12 17:16:04] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:16:07] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:16:07] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973
+[2026-10-12 17:16:16] [INFO] [werkzeug:97]  * Detected change in 'C:\\Users\\Shadow\\Desktop\\NSAT\\wsgi.py', reloading
+[2026-10-12 17:16:16] [INFO] [werkzeug:97]  * Restarting with stat
+[2026-10-12 17:16:18] [WARNING] [werkzeug:97]  * Debugger is active!
+[2026-10-12 17:16:18] [INFO] [werkzeug:97]  * Debugger PIN: 637-451-973

@@ -1,0 +1,20 @@
+services:
+  nsat:
+    build: .
+    container_name: nsat-app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=5000
+      - SECRET_KEY=nsat-production-secret-key-change-me-394820
+      - ALLOW_PUBLIC_TARGETS=false
+    volumes:
+      - nsat_data:/app/instance
+      - nsat_reports:/app/reports/generated
+
+volumes:
+  nsat_data:
+  nsat_reports:

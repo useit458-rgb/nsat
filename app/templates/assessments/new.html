@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Launch New Assessment - NSAT{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9 col-xl-8">
+    <div class="d-flex align-items-center mb-3">
+      <a href="{{ url_for('assessments.list_assessments') }}" class="btn btn-outline-secondary btn-sm me-3">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+      <div>
+        <h3 class="fw-bold mb-0">Launch Security Assessment</h3>
+        <p class="text-muted small mb-0">Configure a bounded, non-destructive audit of an authorized network host.</p>
+      </div>
+    </div>
+
+    <!-- Legal and Scope Notice Banner -->
+    <div class="alert alert-warning border-warning d-flex align-items-start shadow-sm mb-4" role="alert">
+      <i class="bi bi-shield-exclamation fs-3 me-3 text-warning"></i>
+      <div>
+        <h6 class="alert-heading fw-bold mb-1">Defensive Scope & Authorization Notice</h6>
+        <p class="small mb-1">
+          NSAT is strictly designed for auditing private network hosts that you own or have explicit authorization to assess.
+          Arbitrary public IP addresses and domain name scanning are intentionally restricted by the toolkit's defensive safety controls.
+        </p>
+        <span class="badge bg-dark">Accepted: 127.0.0.1, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, ::1</span>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <form method="POST" action="{{ url_for('assessments.new_assessment') }}" id="newAssessmentForm">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+          <!-- Step 1: Target Host Information -->
+          <div class="mb-4">
+            <label for="targetIpInput" class="form-label fw-bold">
+              1. Target IP Address <span class="text-danger">*</span>
+            </label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-hdd-network"></i></span>
+              <input type="text" class="form-control form-control-lg" id="targetIpInput" name="target_ip" 
+                     placeholder="e.g., 127.0.0.1 or 192.168.1.100" 
+                     value="{{ form_data.get('target_ip', '127.0.0.1') }}" required>
+            </div>
+            <div class="form-text">
+              Enter a single IPv4 or IPv6 address. Examples: <code>127.0.0.1</code> (this computer), <code>192.168.1.1</code> (local router).
+            </div>
+          </div>
+
+          <!-- Step 2: Assessment Title -->
+          <div class="mb-4">
+            <label for="titleInput" class="form-label fw-bold">2. Assessment Title / Label (Optional)</label>
+            <input type="text" class="form-control" id="titleInput" name="title" 
+                   placeholder="e.g. Local Workstation Baseline Audit" 
+                   value="{{ form_data.get('title', '') }}">
+            <div class="form-text">A friendly name to help you identify this audit in your history.</div>
+          </div>
+
+          <!-- Step 3: TCP Port Selection -->
+          <div class="mb-4">
+            <label class="form-label fw-bold">3. Port Selection Range</label>
+            <div class="row g-2 mb-2">
+              <div class="col-md-6">
+                <div class="form-check p-3 border rounded bg-light">
+                  <input class="form-check-input" type="radio" name="port_preset" id="presetTop20" value="top20" checked>
+                  <label class="form-check-label fw-semibold" for="presetTop20">
+                    Standard Ports (Top 20)
+                    <div class="text-muted small fw-normal">HTTP, HTTPS, SSH, FTP, Telnet, RDP, DNS, SMB, MySQL</div>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check p-3 border rounded bg-light">
+                  <input class="form-check-input" type="radio" name="port_preset" id="presetWeb" value="web">
+                  <label class="form-check-label fw-semibold" for="presetWeb">
+                    Web & Proxy Ports
+                    <div class="text-muted small fw-normal">80, 443, 8000, 8080, 8443, 8888, 9000</div>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check p-3 border rounded bg-light">
+                  <input class="form-check-input" type="radio" name="port_preset" id="presetDatabase" value="database">
+                  <label class="form-check-label fw-semibold" for="presetDatabase">
+                    Databases
+                    <div class="text-muted small fw-normal">MySQL (3306), Postgres (5432), Redis (6379), MongoDB</div>
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check p-3 border rounded bg-light">
+                  <input class="form-check-input" type="radio" name="port_preset" id="presetCustom" value="custom">
+                  <label class="form-check-label fw-semibold" for="presetCustom">
+                    Custom Port List / Range
+                    <div class="text-muted small fw-normal">Specify custom comma-separated ports or ranges</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="customPortsContainer" style="display: none;" class="mt-2">
+              <input type="text" class="form-control font-monospace" id="portsCustomInput" name="ports" 
+                     placeholder="e.g. 22, 80, 443, 8000-8010" 
+                     value="{{ form_data.get('ports', '') }}">
+              <div class="form-text small">Max 1000 ports allowed per scan to preserve local resources.</div>
+            </div>
+          </div>
+
+          <!-- Step 4: Assessment Modules Checklist -->
+          <div class="mb-4">
+            <label class="form-label fw-bold">4. Assessment Modules</label>
+            <div class="list-group">
+              <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" name="modules" value="port_scan" checked disabled>
+                <span>
+                  <strong>Module 1: TCP Port Scanner</strong>
+                  <small class="d-block text-muted">Checks which TCP ports respond (Nmap with Python socket fallback).</small>
+                </span>
+              </label>
+              <input type="hidden" name="modules" value="port_scan">
+
+              <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" name="modules" value="service_detection" checked>
+                <span>
+                  <strong>Module 2: Service & Product Identification</strong>
+                  <small class="d-block text-muted">Queries service banners to detect running software (e.g., OpenSSH, Nginx, Apache).</small>
+                </span>
+              </label>
+
+              <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" name="modules" value="risk_assessment" checked>
+                <span>
+                  <strong>Module 3: Security Risk & Vulnerability Rules Engine</strong>
+                  <small class="d-block text-muted">Translates observations into prioritized findings with remediation advice.</small>
+                </span>
+              </label>
+
+              <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" name="modules" value="http_tls_checks" checked>
+                <span>
+                  <strong>Module 3b: HTTP Security Headers & TLS Certificate Audit</strong>
+                  <small class="d-block text-muted">Verifies HSTS, CSP, X-Frame-Options, and TLS certificate expiration dates.</small>
+                </span>
+              </label>
+
+              <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" name="modules" value="lynis_audit">
+                <span>
+                  <strong>Module 3c: Local Linux Lynis Audit</strong>
+                  <small class="d-block text-muted">Runs Lynis against local Linux operating system (applies only to 127.0.0.1 on Linux).</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 5: Timeout Settings -->
+          <div class="mb-4">
+            <label for="timeoutRange" class="form-label fw-bold d-flex justify-content-between">
+              <span>5. Scan Duration Timeout Limit</span>
+              <span id="timeoutDisplay" class="text-primary fw-bold">60 seconds</span>
+            </label>
+            <input type="range" class="form-range" min="10" max="180" step="10" id="timeoutRange" name="timeout" 
+                   value="{{ form_data.get('timeout', '60') }}" 
+                   oninput="document.getElementById('timeoutDisplay').innerText = this.value + ' seconds'">
+            <div class="form-text small">Bounded runtime prevents background processes from hanging indefinitely.</div>
+          </div>
+
+          <!-- Step 6: Mandatory Authorization Confirmation -->
+          <div class="p-3 border rounded bg-light mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="authorized" value="yes" id="authCheckbox" required>
+              <label class="form-check-label fw-bold text-dark" for="authCheckbox">
+                I hereby confirm that I am authorized to assess this network host.
+              </label>
+              <div class="text-muted small mt-1">
+                Defensive testing requires explicit ownership or permission. Unauthorized testing is strictly prohibited by law and organizational policy.
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button triggers Review Modal -->
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary btn-lg fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#reviewModal">
+              <i class="bi bi-play-circle-fill me-1"></i> Review & Launch Assessment
+            </button>
+          </div>
+
+          <!-- Review Summary Modal -->
+          <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                  <h5 class="modal-title" id="reviewModalLabel"><i class="bi bi-shield-check text-primary me-2"></i>Confirm Assessment Launch</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="text-muted small">Please review the assessment scope before the background worker begins execution:</p>
+                  <table class="table table-sm table-bordered">
+                    <tbody>
+                      <tr>
+                        <th class="table-light w-50">Target Host</th>
+                        <td id="modalTargetIp">127.0.0.1</td>
+                      </tr>
+                      <tr>
+                        <th class="table-light">Scope Verification</th>
+                        <td class="text-success"><i class="bi bi-check-circle-fill"></i> Private Scope Enforced</td>
+                      </tr>
+                      <tr>
+                        <th class="table-light">Port Strategy</th>
+                        <td id="modalPortPreset">Standard (Top 20)</td>
+                      </tr>
+                      <tr>
+                        <th class="table-light">Max Timeout</th>
+                        <td id="modalTimeout">60s</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="alert alert-info py-2 small mb-0">
+                    <i class="bi bi-info-circle me-1"></i>
+                    Assessment runs in the background. You will be redirected to the real-time observation dashboard.
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modify Parameters</button>
+                  <button type="submit" class="btn btn-primary fw-semibold" id="confirmLaunchBtn">
+                    <i class="bi bi-rocket-takeoff-fill me-1"></i> Start Assessment Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const reviewModal = document.getElementById("reviewModal");
+  if (reviewModal) {
+    reviewModal.addEventListener("show.bs.modal", function () {
+      const ip = document.getElementById("targetIpInput").value || "127.0.0.1";
+      const timeout = document.getElementById("timeoutRange").value || "60";
+      
+      let presetText = "Standard (Top 20)";
+      const checkedPreset = document.querySelector('input[name="port_preset"]:checked');
+      if (checkedPreset) {
+        if (checkedPreset.value === "custom") {
+          presetText = "Custom: " + (document.getElementById("portsCustomInput").value || "Default");
+        } else if (checkedPreset.value === "web") {
+          presetText = "Web & Proxy (80, 443, 8080...)";
+        } else if (checkedPreset.value === "database") {
+          presetText = "Databases (MySQL, Postgres, Redis...)";
+        }
+      }
+
+      document.getElementById("modalTargetIp").textContent = ip;
+      document.getElementById("modalPortPreset").textContent = presetText;
+      document.getElementById("modalTimeout").textContent = timeout + " seconds";
+    });
+  }
+});
+</script>
+{% endblock %}

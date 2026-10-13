@@ -1,0 +1,110 @@
+/* NSAT Custom Theme & Ergonomics */
+
+:root {
+  --nsat-primary: #2563eb;
+  --nsat-dark: #0f172a;
+  --nsat-light-bg: #f8fafc;
+  --nsat-card-border: #e2e8f0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1e293b;
+}
+
+/* Navbar */
+.navbar-brand {
+  letter-spacing: 0.5px;
+}
+
+/* Card Improvements */
+.card {
+  border-color: var(--nsat-card-border);
+  border-radius: 0.65rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--nsat-card-border);
+  font-weight: 600;
+}
+
+/* Stat Counters */
+.stat-card-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Severity Badges & Text */
+.badge-critical {
+  background-color: #dc2626 !important;
+  color: #ffffff;
+}
+
+.badge-high {
+  background-color: #ea580c !important;
+  color: #ffffff;
+}
+
+.badge-medium {
+  background-color: #ca8a04 !important;
+  color: #ffffff;
+}
+
+.badge-low {
+  background-color: #0284c7 !important;
+  color: #ffffff;
+}
+
+.badge-informational {
+  background-color: #64748b !important;
+  color: #ffffff;
+}
+
+/* Tables */
+.table th {
+  font-weight: 600;
+  color: #475569;
+  border-top: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  vertical-align: middle;
+  font-size: 0.925rem;
+}
+
+/* Code & Pre */
+pre {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+code {
+  color: #2563eb;
+  font-size: 0.9em;
+}
+
+/* Pulse Animation for Running Tasks */
+@keyframes pulseGlow {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.pulsing-indicator {
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}

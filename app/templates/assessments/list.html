@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Assessment History - NSAT{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-7">
+    <h2 class="fw-bold mb-1"><i class="bi bi-journal-text text-primary me-2"></i>Assessment History</h2>
+    <p class="text-muted mb-0">Browse past security scans, monitor trends, and compare findings over time.</p>
+  </div>
+  <div class="col-md-5 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
+    <a href="{{ url_for('assessments.compare_assessments') }}" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left-right me-1"></i> Compare Scans
+    </a>
+    <a href="{{ url_for('assessments.new_assessment') }}" class="btn btn-primary fw-semibold">
+      <i class="bi bi-plus-lg me-1"></i> New Assessment
+    </a>
+  </div>
+</div>
+
+<!-- Search and Filter Bar -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body py-3">
+    <form method="GET" action="{{ url_for('assessments.list_assessments') }}" class="row g-2 align-items-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+          <input type="text" class="form-control" name="q" placeholder="Search by Target IP or Title..." value="{{ search_query }}">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <select class="form-select" name="status">
+          <option value="">All Statuses</option>
+          <option value="COMPLETED" {% if status_filter == 'COMPLETED' %}selected{% endif %}>Completed</option>
+          <option value="RUNNING" {% if status_filter == 'RUNNING' %}selected{% endif %}>Running</option>
+          <option value="QUEUED" {% if status_filter == 'QUEUED' %}selected{% endif %}>Queued</option>
+          <option value="FAILED" {% if status_filter == 'FAILED' %}selected{% endif %}>Failed</option>
+          <option value="CANCELLED" {% if status_filter == 'CANCELLED' %}selected{% endif %}>Cancelled</option>
+        </select>
+      </div>
+      <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-secondary">Filter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Assessments Table -->
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    {% if assessments %}
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Target IP</th>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Open Ports</th>
+              <th>Findings</th>
+              <th>Risk Score</th>
+              <th>Created</th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in assessments %}
+              <tr>
+                <td class="text-muted fw-bold">#{{ a.id }}</td>
+                <td>
+                  <span class="badge bg-light text-dark border font-monospace">{{ a.target_ip }}</span>
+                </td>
+                <td class="fw-semibold">{{ a.title }}</td>
+                <td>
+                  <span class="badge {{ a.status | status_badge }}">{{ a.status }}</span>
+                </td>
+                <td>
+                  <span class="fw-bold">{{ a.open_ports_count }}</span>
+                  <small class="text-muted">open</small>
+                </td>
+                <td>
+                  <span class="badge bg-secondary">{{ a.findings | length }}</span>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="progress flex-grow-1" style="height: 6px; width: 50px;">
+                      <div class="progress-bar {% if a.risk_score > 60 %}bg-danger{% elif a.risk_score > 30 %}bg-warning{% else %}bg-success{% endif %}" 
+                           style="width: {{ a.risk_score }}%;"></div>
+                    </div>
+                    <small class="fw-bold">{{ a.risk_score | round_num }}</small>
+                  </div>
+                </td>
+                <td class="text-muted small">{{ a.created_at | format_dt("%Y-%m-%d %H:%M") }}</td>
+                <td class="text-end">
+                  <div class="d-inline-flex gap-1">
+                    <a href="{{ url_for('assessments.assessment_detail', assessment_id=a.id) }}" class="btn btn-sm btn-outline-primary">
+                      View <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <form method="POST" action="{{ url_for('assessments.delete_assessment', assessment_id=a.id) }}" class="d-inline" onsubmit="return confirm('Permanently delete assessment for {{ a.target_ip }} (#{{ a.id }})?');">
+                      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                      <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Assessment">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="text-center py-5 text-muted">
+        <i class="bi bi-journal-x display-4 text-muted mb-2 d-block"></i>
+        <p class="mb-0 fw-semibold">No assessments found matching criteria.</p>
+        <small>Adjust your filter or launch a new assessment.</small>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Security Assessment Report - {{ assessment.target_ip }}</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.5;
+      color: #1e293b;
+      margin: 0;
+      padding: 40px;
+      background-color: #ffffff;
+    }
+    .header-banner {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    h1 { margin: 0 0 8px 0; color: #0f172a; font-size: 26px; }
+    h2 { margin: 25px 0 12px 0; color: #1e293b; font-size: 18px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .bg-critical { background-color: #dc2626; }
+    .bg-high { background-color: #ea580c; }
+    .bg-medium { background-color: #ca8a04; }
+    .bg-low { background-color: #0284c7; }
+    .bg-info { background-color: #64748b; }
+    .meta-table, .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+      font-size: 13px;
+    }
+    .meta-table td, .meta-table th {
+      padding: 8px 12px;
+      border: 1px solid #e2e8f0;
+    }
+    .meta-table th {
+      background-color: #f8fafc;
+      text-align: left;
+      width: 25%;
+    }
+    .data-table th, .data-table td {
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      text-align: left;
+    }
+    .data-table th { background-color: #f1f5f9; }
+    .finding-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      padding: 16px;
+      background-color: #f8fafc;
+    }
+    .finding-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .evidence-box {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: monospace;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin: 8px 0;
+      white-space: pre-wrap;
+    }
+    .disclaimer-box {
+      margin-top: 40px;
+      padding: 16px;
+      background-color: #f1f5f9;
+      border-left: 4px solid #64748b;
+      font-size: 12px;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <h1>Network Security Assessment Report</h1>
+    <div style="color: #64748b; font-size: 13px;">
+      Report ID: <strong>REP-{{ assessment.uuid[:8].upper() }}</strong> &bull; 
+      Target: <strong>{{ assessment.target_ip }}</strong> &bull; 
+      Generated: <strong>{{ generated_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}</strong>
+    </div>
+  </div>
+
+  <h2>1. Scope & Assessment Summary</h2>
+  <table class="meta-table">
+    <tr>
+      <th>Assessment Title</th>
+      <td>{{ assessment.title }}</td>
+      <th>Target IP Address</th>
+      <td><code>{{ assessment.target_ip }}</code> (Private Scope)</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td><strong>{{ assessment.status }}</strong></td>
+      <th>Composite Risk Score</th>
+      <td><strong>{{ assessment.risk_score }} / 100</strong></td>
+    </tr>
+    <tr>
+      <th>Started</th>
+      <td>{{ assessment.start_time or 'N/A' }}</td>
+      <th>Duration</th>
+      <td>{{ assessment.duration_seconds or 0 }} seconds</td>
+    </tr>
+    <tr>
+      <th>Ports Requested</th>
+      <td>{{ assessment.ports_spec }}</td>
+      <th>Active Modules</th>
+      <td>{{ assessment.modules | join(', ') }}</td>
+    </tr>
+  </table>
+
+  <h2>2. Executive Risk Breakdown</h2>
+  <table class="data-table" style="text-align: center;">
+    <thead>
+      <tr>
+        <th style="background-color: #dc2626; color: white;">Critical</th>
+        <th style="background-color: #ea580c; color: white;">High</th>
+        <th style="background-color: #ca8a04; color: white;">Medium</th>
+        <th style="background-color: #0284c7; color: white;">Low</th>
+        <th style="background-color: #64748b; color: white;">Informational</th>
+        <th style="background-color: #0f172a; color: white;">Open Ports</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.severity_counts['Critical'] }}</td>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.severity_counts['High'] }}</td>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.severity_counts['Medium'] }}</td>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.severity_counts['Low'] }}</td>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.severity_counts['Informational'] }}</td>
+        <td style="font-weight: bold; font-size: 18px;">{{ assessment.open_ports_count }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Discovered TCP Port Observations</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Port</th>
+        <th>Protocol</th>
+        <th>State</th>
+        <th>Reason</th>
+        <th>Identified Service</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in assessment.port_results %}
+        <tr>
+          <td><strong>{{ p.port_number }}</strong></td>
+          <td>{{ p.protocol | upper }}</td>
+          <td><strong>{{ p.state | upper }}</strong></td>
+          <td>{{ p.reason or '-' }}</td>
+          <td>{{ p.service_name or 'Unspecified' }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5" style="text-align: center; color: #64748b;">No port records available.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>4. Prioritized Security Findings</h2>
+  {% for f in assessment.findings %}
+    <div class="finding-card">
+      <div class="finding-title">
+        <div>
+          <span class="badge {% if f.severity == 'Critical' %}bg-critical{% elif f.severity == 'High' %}bg-high{% elif f.severity == 'Medium' %}bg-medium{% elif f.severity == 'Low' %}bg-low{% else %}bg-info{% endif %}">
+            {{ f.severity }}
+          </span>
+          <span style="margin-left: 8px;">{{ f.title }}</span>
+        </div>
+        <div style="font-size: 12px; color: #64748b;">
+          Port: {{ f.port or 'N/A' }} | Confidence: {{ f.confidence }}
+        </div>
+      </div>
+      <p style="margin: 6px 0; font-size: 13px;"><strong>Description:</strong> {{ f.description }}</p>
+      <div class="evidence-box">Evidence: {{ f.evidence }}</div>
+      <p style="margin: 6px 0; font-size: 13px;"><strong>Risk Rationale:</strong> {{ f.reasoning }}</p>
+      <p style="margin: 6px 0; font-size: 13px; color: #15803d;"><strong>Remediation:</strong> {{ f.remediation }}</p>
+      {% if f.references %}
+        <div style="font-size: 11px; color: #475569; margin-top: 6px;">
+          References: {{ f.references | join(' &bull; ') }}
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p style="color: #64748b;">No security findings identified during this assessment.</p>
+  {% endfor %}
+
+  <div class="disclaimer-box">
+    <strong>DEFENSIVE ASSESSMENT NOTICE & LIMITATIONS:</strong>
+    This security report represents observations gathered during an authorized assessment against <code>{{ assessment.target_ip }}</code>.
+    A port observed as closed or filtered does not guarantee that no service exists behind firewall boundaries. Findings represent
+    identified exposures and configuration weaknesses, not confirmed exploitability.
+  </div>
+
+</body>
+</html>

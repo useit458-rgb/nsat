@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}System Health & Settings - NSAT{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <h2 class="fw-bold mb-1"><i class="bi bi-gear-fill text-primary me-2"></i>System Health & Environment Settings</h2>
+    <p class="text-muted mb-0">Inspect underlying engine dependencies, external binaries, database status, and safety limits.</p>
+  </div>
+</div>
+
+<div class="row g-4">
+  <!-- Core Engine Diagnostics -->
+  <div class="col-lg-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-header bg-white fw-bold">
+        <i class="bi bi-cpu text-primary me-2"></i>Application Runtime Environment
+      </div>
+      <div class="card-body">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="text-muted w-50">Toolkit Application:</th>
+              <td class="fw-bold">{{ diagnostics.app_name }} v{{ diagnostics.app_version }}</td>
+            </tr>
+            <tr>
+              <th class="text-muted">Python Version:</th>
+              <td><span class="badge bg-info text-dark">Python {{ diagnostics.python_version }}</span></td>
+            </tr>
+            <tr>
+              <th class="text-muted">Host Operating System:</th>
+              <td>{{ diagnostics.os_platform }}</td>
+            </tr>
+            <tr>
+              <th class="text-muted">Linux Host Architecture:</th>
+              <td>
+                {% if diagnostics.is_linux %}
+                  <span class="badge bg-success"><i class="bi bi-check2"></i> Linux Native</span>
+                {% else %}
+                  <span class="badge bg-secondary">Non-Linux (Windows/macOS)</span>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th class="text-muted">Database Engine:</th>
+              <td>
+                {% if diagnostics.db_connected %}
+                  <span class="badge bg-success"><i class="bi bi-check-circle"></i> Connected (SQLite)</span>
+                  <div class="small text-muted mt-1">Size: {{ diagnostics.db_size_kb }} KB</div>
+                {% else %}
+                  <span class="badge bg-danger">Database Disconnected</span>
+                {% endif %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Tooling Availability -->
+  <div class="col-lg-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-header bg-white fw-bold">
+        <i class="bi bi-terminal text-primary me-2"></i>External Tool Integrations
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush mb-0">
+          <li class="list-group-item px-0 py-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <strong>Nmap Port Scanner</strong>
+              {% if diagnostics.nmap_available %}
+                <span class="badge bg-success"><i class="bi bi-check2"></i> Binary Found</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Fallback Socket Active</span>
+              {% endif %}
+            </div>
+            <div class="small text-muted">Configured Path: <code>{{ diagnostics.nmap_path }}</code></div>
+            <div class="small text-muted">Status: {{ diagnostics.nmap_version }}</div>
+          </li>
+
+          <li class="list-group-item px-0 py-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <strong>Lynis Linux Host Auditor</strong>
+              {% if diagnostics.lynis_available %}
+                <span class="badge bg-success"><i class="bi bi-check2"></i> Ready</span>
+              {% else %}
+                <span class="badge bg-secondary">{{ diagnostics.lynis_status }}</span>
+              {% endif %}
+            </div>
+            <div class="small text-muted">Configured Path: <code>{{ diagnostics.lynis_path }}</code></div>
+            <div class="small text-muted">
+              Note: Lynis audits the local Linux operating system only (requires root or sudo for deep kernel checks).
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Safety Bounds and Policy -->
+  <div class="col-12">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white fw-bold">
+        <i class="bi bi-shield-check text-success me-2"></i>Defensive Scope Limits & Safety Policy
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <div class="p-3 border rounded bg-light">
+              <div class="text-muted small fw-bold">MAX PORTS PER SCAN</div>
+              <div class="fs-4 fw-bold text-dark">{{ diagnostics.max_ports_per_scan }}</div>
+              <small class="text-muted">Prevents system freeze</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded bg-light">
+              <div class="text-muted small fw-bold">DEFAULT TIMEOUT</div>
+              <div class="fs-4 fw-bold text-dark">{{ diagnostics.default_timeout }}s</div>
+              <small class="text-muted">Standard scan duration</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded bg-light">
+              <div class="text-muted small fw-bold">MAX TIMEOUT CEILING</div>
+              <div class="fs-4 fw-bold text-dark">{{ diagnostics.max_timeout }}s</div>
+              <small class="text-muted">Hard process timeout</small>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded bg-light">
+              <div class="text-muted small fw-bold">TARGET SCOPE RESTRICTION</div>
+              <div class="fs-4 fw-bold text-success">STRICT</div>
+              <small class="text-muted">Private/loopback only</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-light border mt-4 mb-0 small text-muted">
+          <i class="bi bi-info-circle me-1 text-primary"></i>
+          <strong>Configuration Note:</strong> Safety limits can be adjusted by editing your <code>.env</code> file or setting environment variables before running NSAT.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

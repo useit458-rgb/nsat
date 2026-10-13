@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Network Security Assessment Toolkit{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <h2 class="fw-bold mb-1"><i class="bi bi-shield-check text-primary me-2"></i>Security Overview Dashboard</h2>
+    <p class="text-muted mb-0">Authorized defensive assessments, TCP port tracking, and vulnerability risk engine.</p>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <a href="{{ url_for('assessments.new_assessment') }}" class="btn btn-primary px-3 py-2 shadow-sm fw-semibold">
+      <i class="bi bi-plus-lg me-1"></i> Start New Assessment
+    </a>
+  </div>
+</div>
+
+<!-- Stat Metric Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="card h-100 border-start border-primary border-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted fw-semibold small text-uppercase">Total Assessments</span>
+          <i class="bi bi-journal-check text-primary fs-4"></i>
+        </div>
+        <div class="stat-card-number text-dark">{{ total_assessments }}</div>
+        <div class="text-muted small mt-1">
+          <span class="text-success fw-semibold">{{ completed_assessments }} Completed</span> &bull; 
+          <span class="text-primary fw-semibold">{{ active_assessments }} Active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="card h-100 border-start border-danger border-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted fw-semibold small text-uppercase">Critical & High Risks</span>
+          <i class="bi bi-exclamation-octagon-fill text-danger fs-4"></i>
+        </div>
+        <div class="stat-card-number text-danger">{{ severity_counts['Critical'] + severity_counts['High'] }}</div>
+        <div class="text-muted small mt-1">
+          <span class="badge badge-critical px-2 py-1">{{ severity_counts['Critical'] }} Critical</span>
+          <span class="badge badge-high px-2 py-1">{{ severity_counts['High'] }} High</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="card h-100 border-start border-warning border-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted fw-semibold small text-uppercase">Medium & Low Risks</span>
+          <i class="bi bi-shield-exclamation text-warning fs-4"></i>
+        </div>
+        <div class="stat-card-number text-warning">{{ severity_counts['Medium'] + severity_counts['Low'] }}</div>
+        <div class="text-muted small mt-1">
+          <span class="badge badge-medium px-2 py-1">{{ severity_counts['Medium'] }} Medium</span>
+          <span class="badge badge-low px-2 py-1">{{ severity_counts['Low'] }} Low</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="card h-100 border-start border-info border-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted fw-semibold small text-uppercase">Assessed Assets</span>
+          <i class="bi bi-hdd-network-fill text-info fs-4"></i>
+        </div>
+        <div class="stat-card-number text-dark">{{ total_assets }}</div>
+        <div class="text-muted small mt-1">
+          <i class="bi bi-check-circle-text text-success"></i> Strictly private/loopback
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Charts & System Health Row -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-5">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-pie-chart-fill me-1 text-primary"></i> Findings Severity Breakdown</span>
+        <span class="badge bg-light text-dark border">{{ total_findings }} total</span>
+      </div>
+      <div class="card-body d-flex flex-column justify-content-center align-items-center">
+        {% if total_findings > 0 %}
+          <div style="max-height: 250px; width: 100%;">
+            <canvas id="severityDonutChart"></canvas>
+          </div>
+        {% else %}
+          <div class="text-center py-5 text-muted">
+            <i class="bi bi-shield-check display-4 text-success mb-2 d-block"></i>
+            <p class="mb-0 fw-semibold">No security findings recorded yet.</p>
+            <small>Run an assessment against a target host to begin analysis.</small>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-bar-chart-line-fill me-1 text-primary"></i> Recent Assessment Risk Scores</span>
+        <span class="small text-muted">0 (Secure) - 100 (High Risk)</span>
+      </div>
+      <div class="card-body">
+        {% if recent_assessments %}
+          <div style="height: 250px; width: 100%;">
+            <canvas id="riskScoreBarChart"></canvas>
+          </div>
+        {% else %}
+          <div class="text-center py-5 text-muted">
+            <i class="bi bi-activity display-4 text-muted mb-2 d-block"></i>
+            <p class="mb-0 fw-semibold">No recent assessment history.</p>
+            <small>New assessments will graph historical scores here.</small>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Assessments Table & Tools Readiness -->
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-clock-history me-1 text-primary"></i> Recent Security Assessments</span>
+        <a href="{{ url_for('assessments.list_assessments') }}" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="card-body p-0">
+        {% if recent_assessments %}
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Target IP</th>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Open Ports</th>
+                  <th>Risk Score</th>
+                  <th>Date</th>
+                  <th class="text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for a in recent_assessments %}
+                  <tr>
+                    <td>
+                      <code>{{ a.target_ip }}</code>
+                    </td>
+                    <td class="fw-semibold text-truncate" style="max-width: 180px;">{{ a.title }}</td>
+                    <td>
+                      <span class="badge {{ a.status | status_badge }}">{{ a.status }}</span>
+                    </td>
+                    <td>
+                      <span class="badge bg-light text-dark border">{{ a.open_ports_count }}</span>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="progress flex-grow-1" style="height: 6px; width: 60px;">
+                          <div class="progress-bar {% if a.risk_score > 60 %}bg-danger{% elif a.risk_score > 30 %}bg-warning{% else %}bg-success{% endif %}" 
+                               style="width: {{ a.risk_score }}%;"></div>
+                        </div>
+                        <small class="fw-bold">{{ a.risk_score | round_num }}</small>
+                      </div>
+                    </td>
+                    <td class="text-muted small">{{ a.created_at | format_dt("%m/%d %H:%M") }}</td>
+                    <td class="text-end">
+                      <div class="d-inline-flex gap-1">
+                        <a href="{{ url_for('assessments.assessment_detail', assessment_id=a.id) }}" class="btn btn-sm btn-outline-primary" title="View Details">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                        <form method="POST" action="{{ url_for('assessments.delete_assessment', assessment_id=a.id) }}" class="d-inline" onsubmit="return confirm('Permanently delete assessment for {{ a.target_ip }} (#{{ a.id }})?');">
+                          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                          <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete Assessment">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <div class="text-center py-5 text-muted">
+            <p class="mb-0">No assessments executed yet.</p>
+            <a href="{{ url_for('assessments.new_assessment') }}" class="btn btn-sm btn-primary mt-2">
+              <i class="bi bi-play-fill"></i> Launch Your First Assessment
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header">
+        <i class="bi bi-cpu-fill me-1 text-primary"></i> Assessment Engine Diagnostics
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <div>
+              <strong>Nmap Port Scanner</strong>
+              <div class="small text-muted">TCP connect & version probing</div>
+            </div>
+            {% if tools_status.nmap %}
+              <span class="badge bg-success"><i class="bi bi-check2"></i> Available</span>
+            {% else %}
+              <span class="badge bg-warning text-dark"><i class="bi bi-shield-slash"></i> Socket Fallback</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <div>
+              <strong>Lynis Linux Auditor</strong>
+              <div class="small text-muted">Local host configuration audit</div>
+            </div>
+            {% if tools_status.lynis %}
+              <span class="badge bg-success"><i class="bi bi-check2"></i> Ready</span>
+            {% elif tools_status.platform != 'Linux' %}
+              <span class="badge bg-secondary">Linux only (Host: {{ tools_status.platform }})</span>
+            {% else %}
+              <span class="badge bg-warning text-dark">Not Installed</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <div>
+              <strong>Python Environment</strong>
+              <div class="small text-muted">Runtime core version</div>
+            </div>
+            <span class="badge bg-info text-dark">Python {{ tools_status.python_version }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <div>
+              <strong>Report Generator</strong>
+              <div class="small text-muted">HTML, JSON, PDF exports</div>
+            </div>
+            <span class="badge bg-success"><i class="bi bi-check2"></i> Ready</span>
+          </li>
+        </ul>
+
+        <div class="alert alert-light border small text-muted mb-0">
+          <i class="bi bi-info-circle text-primary me-1"></i>
+          <strong>Scope Policy:</strong> To protect privacy and prevent network abuse, NSAT restricts target input to explicitly confirmed private IP blocks (RFC 1918) and local loopback.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  {% if total_findings > 0 %}
+  // Render Severity Donut Chart
+  const ctxDonut = document.getElementById("severityDonutChart");
+  if (ctxDonut) {
+    new Chart(ctxDonut, {
+      type: "doughnut",
+      data: {
+        labels: {{ chart_data.labels | tojson }},
+        datasets: [{
+          data: {{ chart_data.counts | tojson }},
+          backgroundColor: ["#dc2626", "#ea580c", "#ca8a04", "#0284c7", "#64748b"],
+          borderWidth: 2,
+          borderColor: "#ffffff"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "bottom" }
+        }
+      }
+    });
+  }
+  {% endif %}
+
+  {% if recent_assessments %}
+  // Render Risk Score Bar Chart
+  const ctxBar = document.getElementById("riskScoreBarChart");
+  if (ctxBar) {
+    new Chart(ctxBar, {
+      type: "bar",
+      data: {
+        labels: {{ chart_data.recent_labels | tojson }},
+        datasets: [{
+          label: "Risk Score (0-100)",
+          data: {{ chart_data.recent_scores | tojson }},
+          backgroundColor: "#2563eb",
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  }
+  {% endif %}
+});
+</script>
+{% endblock %}
